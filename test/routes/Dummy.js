@@ -1,15 +1,18 @@
-const router = require('express').Router();
-
+const express = require("express");
 const {
-    addDummyUsers,
-    addDummyProducts,
-    addDummyCategories,
-    addDummyOrders,
-} = require('../controller/Dummy');
+  addDummyUsers,
+  addDummyCategories,
+  addDummyProducts,
+  addDummyOrders,
+  calculateTotalRevenue,
+} = require("../controller/Dummy");
 
-router.post('/add-users', addDummyUsers);
-router.post('/add-products', addDummyProducts);
-router.post('/add-categories', addDummyCategories);
-router.post('/add-orders', addDummyOrders);
+const router = express.Router();
+
+router.post("/dummy/users", addDummyUsers);
+router.post("/dummy/categories", addDummyCategories);
+router.post("/dummy/products", addDummyProducts);
+router.post("/dummy/orders", addDummyOrders);
+router.get("/dummy/revenue", calculateTotalRevenue);
 
 module.exports = router;
